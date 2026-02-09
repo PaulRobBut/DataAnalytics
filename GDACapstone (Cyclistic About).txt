@@ -1,0 +1,451 @@
+Get started
+Introduction to building your portfolio
+- By completing your capstone project, you will practice
+-- Going through the Ask, Prepare, Process, Analyze, and Share phases of the data analysis process
+-- Stating a business task clearly
+-- Importing data from a real dataset
+-- Documenting any data cleaning that you perform on the dataset
+-- Analyzing the data 
+-- Creating data visualizations from your analysis
+-- Summarizing key findings from your analysis
+-- Documenting your conclusions and recommendations
+-- Creating and publishing your case study 
+
+Get started with your case study
+- Track 1
+-- Demonstrate job skills for future interviews
+- Track 2
+-- Flexible portfolio piece about a personal interest
+- Cite your sources, don't plagiarize
+
+Choose your case study track
+
+Capstone roadmap
+
+- Ask
+-- Guiding questions
+--- What topic are you exploring?
+--- What is the problem you are trying to solve?
+--- What metrics will you use to measure your data to achieve your objective? Who are the stakeholders?
+--- Who is your audience for this analysis and how does this affect your analysis process and presentation?
+--- How will this data help your stakeholders make decisions?
+-- Key tasks
+--- Choose a case study
+---- Case Study 1, the bike shop
+--- Identify the problem
+---- The company wants to convert their casual members into annual members, and they want to understand how those two demographics differ, why casual members are not buying memberships and how digital media affects their marketing tactics
+--- Determine key stakeholders
+---- Lily Moreno, Cyclistic marketing analytics team, Cyclistic executive team
+--- Explore the data and establish metrics
+
+- 1. How do annual members and casual riders use Cyclistic bikes differently? 
+- 2. Why would casual riders buy Cyclistic annual memberships?  
+- 3. How can Cyclistic use digital media to influence casual riders to become members? 
+- Moreno has assigned you the first question to answer. How do annual members and casual riders use Cyclistic bikes differently?
+
+- My Questions
+-- Do you use Cyclistic bikes? (Closed Ended Question, but one that lets me know I'm talking to a customer)
+-- (If yes to the previous question) What payment method do you usually use?
+-- Why do you prefer to use that payment method?
+-- How did you hear about Cyclistic bikes?
+
+Ask (Roadmap)
+- Guiding questions
+-- What is the problem I am trying to solve?
+--- The company wants to convert their casual members into annual members, and they want to understand how those two demographics differ in their bike usage, and so I must find the differences between those demographics
+-- How can your insights drive business decisions?
+--- My insights will showcase how the demographics differ, highlighting why each demographic uses their bikes in the way that they do and to what extent
+- Key tasks
+-- Identify the business task
+--- Locate why the two demographics use their bike memberships in different ways to find ways to convert casual riders to members
+-- Consider key stakeholders
+--- Lily Moreno, Cyclistic marketing analytics team, Cyclistic executive team
+- Deliverable
+-- A clear statement of the business task
+--- Identify the differences in bike usages by Cyclistic casual riders and annual members in order to find ways to convert casual riders into annual members
+
+- Prepare
+-- Guiding questions
+--- Where is your data located? 
+---- On spreadsheets from Cyclistic, first party internal data.
+--- How is the data organized? 
+---- Within spreadsheets, structured data in wide format
+--- Are there issues with bias or credibility in this data? Does your data ROCCC?
+---- Both the 2019 and the 2020 sheets heavily favor the subscriber data, with the 2019 set having more male customers than female. 
+---- Given how we are using a vetted public dataset data for this project, we can see that we are using data that is reliable. The data has been validated by Motivate International Inc, so it is original. The data sets provide enough information in order to answer our problems, so it is comprehensive. While technically not up to date, the assignment is not time restrictive, so for now, we can say it is current. Finally,  we are using data from Lyft, so we do have a source provided. Our data ROCCCs!
+--- How are you addressing licensing, privacy, security, and accessibility?
+---- The dataset used is owned by Lyft, and through their license, grants us a limited license to access, analyze and distribute the data they have provided for any lawful purpose, such as our fictional analysis project. So as long as my project doesn't break any of their rules of use, which it shouldn't, the data is free to use for the assignment.
+---- Customer IDs will not be backtracked, to keep their anonymity safe.
+---- I am just using the two data sheets provided on the PDF
+---- I am just using data that is freely accessible through the license provided
+--- How did you verify the data’s integrity?
+---- Examining both datasheets, there appears to be an inconsistency in how data is stored, with one using entirely different ID types than the other, otherwise, the only real blemish I can see on the integrity is a couple straggling data entries having missing fields.
+--- How does it help you answer your question?
+---- By organizing data between casual riders and members, we can examine which fields change the most significantly
+--- Are there any problems with the data?
+---- Inconsistent fields, a couple blank entries
+-- Key tasks
+--- Collect data and store it appropriately
+--- Identify how it’s organized
+--- Sort and filter the data
+--- Determine the credibility of the data
+
+- Process
+-- Guiding questions
+--- What tools are you choosing and why?
+---- Using Google Sheets (where the initial sheets came from) and RStudio to help with visualization creation.
+--- Have you ensured your data’s integrity?
+---- The data comes from a trustworthy source, though upon further inspection, there are cleaning tasks that need to be performed.
+---- Data is complete, with enough information to solve the business task, with consistent fields across the spreadsheets
+--- What steps have you taken to ensure that your data is clean?
+---- 2019
+----- Cleared bottom blank rows for easier cleaning
+----- Multiple cells for gender were blank, so rather than disposing of all the data, I filled in the blanks with "Not Given" to keep data consistent
+----- There was no easy fix for the missing dates, and unfortunately trying to delete all of the rows with blank dates caused Sheets to crash, so I decided to move forward with the blank spots, as even now we have enough filled in age groups.
+----- Did a whitespace trim check, but no cells had whitespace
+----- ...Don't waste time by using ChangeCase here, just please don't.
+----- Did a remove duplicates check, no duplicates found
+----- Formatted columns B & C to datetime
+----- Formatted tripduration to remove decimals from tripduration cells with a trailing .00
+----- created ride_length column to determine trip duration
+----- created day_of_week column to determine the day of the week for each ride
+----- Utilized a pivot table to locate typos for the to and from stations, none found
+---- 2020
+----- Cleared bottom blank rows for easier cleaning
+----- Removed one row with a missing end station (possibly stolen bike?)
+----- Performed whitespace and duplicate check, none found
+----- Formatted columns C & D to datetime for easier reading
+----- Checked latitude columns to see if there were any inputs over 43 or below 40, there were none
+----- Checked longitude columns to see if there were any inputs over -87 or below -88, there were none
+----- created ride_length column to determine trip duration
+----- created day_of_week column to determine the day of the week for each ride
+----- * Wanted to delete rows with HQ QR, but sheets kept crashing
+----- Utilized a pivot table to locate typos for the to and from stations, none found
+--- How can you verify that your data is clean and ready to analyze?
+--- Have you documented your cleaning process so you can review and share those results?
+-- Key tasks
+--- Check the data for errors
+--- Transform the data into the right type
+--- Document the cleaning process
+--- Choose your tools
+
+- Analyze
+-- Guiding questions
+--- How should you organize your data to perform analysis on it?
+--- Has your data been properly formatted?
+--- What surprises did you discover in the data?
+--- What trends or relationships have you found in the data?
+--- How do these insights answer your question or solve the problem?
+-- Key Tasks
+--- Aggregate your data so it’s useful and accessible
+--- Organize and format your data
+--- Perform calculations
+---- 2019
+----- Average: 0:16:56
+----- Max: 2953:20:22
+----- Mode: 5
+----- Note: To remove outliers from the math, I filtered out the data points with the 20 highest ride lengths, as they greatly impact the ending results, and this serves to give a clearer view of customer trends
+----- Average ride lengths
+------ On average, customers have a higher average ride length, which indicates that casual riders have a higher likelihood to use their bikes for longer periods of time at a 44 minute average, which could be seen as them wanting to get the most out of their bike usage. Subscribers have a lower average at 12 minutes, indicating that subscribers are more comfortable using and returning their bikes in short usages.
+----- Ride length for days of the week
+------ Riders seem to have an overall higher average on the weekends, with Saturdays being the most popular date for both subscribers and casuals, with Casuals having a higher average on Mondays, Thurdays and Saturdays. 
+----- Count of trips
+------ Casual riders ride more often on Friday - Sunday, on the weekends, with a high point of Saturday with a height of 5990 riders. Subscribers often ride their bikes around the weekdays, with a high point of Thursdays with a total of 63983 riders. Totally, subscribers use their bikes more frequently, with tens of thousands of times greater usages on a daily basis. This could imply that Subscribers are more likely to use their bikes for consistent transportation on the weekdays, whereas casual members are more likely to use their bikes for casual, leisurely weekend use. 
+---- 2020
+----- Average: 0:22:07
+----- Max: 2607:30:24
+----- Mode: 3
+----- Note: There are several data points with an absurdly low or negative time, most often with start and end points at "HQ QR", as these are most likely testing data, they will be filtered out of the following analysis. 
+----- Average ride lengths
+------ Much like with the 2019 data, casual riders take the large majority of ride duration on average, at 1:43:51, which is an over hour and a half lead on members, who sit at 12:41.
+----- Ride length for days of the week
+------ Casuals average around 1:43:51, with peaks on Thursdays and Fridays. Whereas Subscribers hover around a 12:41 average, with peaks on Saturdays and Sundays. In total, despite the casuals numbers, the averages are greatest on the weekends.
+----- Count of trips
+------ Casual riders spike on weekends, with Sunday having a lead of 7000 over the second highest, Saturday. Subscribers on the other hand are more frequently riding on the weekdays, where totals hover around the 60000 range, whereas the count for the weekends hovers around the 30000 range. Overall, bikes seem to be most frequently used on weekdays, carried by subscribers.
+----- Noticing way too late that I didn't filter out the top 20 highest bike ride lengths out of 2020 for consistency...
+--- RStudio Tasks
+---- Note: For anyone wanting to do this project, RStudio is likely to crash, causing you to lose progress. Save your workspace frequently.
+---- Converted the Google Sheets from the last step into csv files for easier uploading, then uploaded them to a new RStudio project.
+---- Using RStudio, I altered the column names of one spreadsheet to better fit with the other, as well as mutating ride_id and rideable_type to char types, so the conjoined columns will have a consistent data type.
+---- Both spreadsheets are combined into one all_trips sheet
+---- To make the member_casual column consistent, all "Subscriber" and "Customer" are converted to "member" and "casual" entries respectively.
+---- New date columns are added, showing the main date, month, day, year and day of week for each
+----- Also added a "ride_length" calculation to determine how long each trip was in seconds
+---- Took an extra step to remove all entries from HQ QR, as that was incorrectly entered for quality control purposes.
+---- Analysis
+----- Average Ride Length: 1189.459 Seconds
+------ Our baseline for an average Cyclistic bike trip is 19.81 minutes
+----- Midpoint of ride lengths: 539
+------ Given how the midpoint is lower than the average, that tells us that the average is being carried by fewer bike riders riding their bikes for longer periods of time.
+----- Max ride length: 10632022
+------ Or 123 days. Looking at the top 20 highest riding times, 5 of them are members and 15 are casuals.
+----- Min Ride length: 1
+------ As in yes, some only rode their bikes for a single second. Looking at the lowest ride times, of the bottom 20, only one of them was a casual rider, the rest were members
+----- Summary:
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+    1     331       539        1190  912 	 10632022 
+------ Our baseline expectations for further analysis. Min and 1st quarter shows us what to expect from the lower range of the data, with 3rd quarter and max showing the upper range. Interestingly, the 3rd quarter point is only a triple digit number, which is 5 less than the max, which indicates that the higher ride durations are just being held up by a few people. The Median and Mean show us that most data points are from users that only use their bikes for a low amount of time, most likely to get them from point to point rather than casual riding.
+
+--- Identify trends and relationships
+----- Comparing Casual and Member riders
+------ Means: 
+-------   all_trips_v2$member_casual all_trips_v2$ride_length
+1                     casual                5372.7839
+2                     member                 795.2523
+------- From this, we can see that casual riders have a significantly higher ride average than members, and nearly 5 times greater than the overall average. This tells us that the majority of the larger ride times primarily come from casual riders, as members ride times sit more comfortably close to the average ride time, though just sitting below the 3rd quarter point.
+
+------ Medians: 
+-------   all_trips_v2$member_casual all_trips_v2$ride_length
+1                     casual                     1393
+2                     member                      508
+------- The median point for casual riders is significantly high, surpassing both the average and 3rd quarter ride lengths. This indicates that casual riders frequently use their bikes for longer periods of time. Members however, have a fairly insignificant median, as it is very close to, though slightly under the overall median.
+
+------ Maxes: 
+-------   all_trips_v2$member_casual all_trips_v2$ride_length
+1                     casual                 10632022
+2                     member                  6096428
+------- As to be expected from the data so far, the highest casual ride is significantly higher than the highest member ride, nearly doubly so. This indicates that the overall average is being carried stronger by casual riders than members.
+
+------ Mins: 
+-------   all_trips_v2$member_casual all_trips_v2$ride_length
+1                     casual                        2
+2                     member                        1
+------- While at face value, this data just tells us that a casual rider and a member only rode their bikes for 2 and 1 seconds respectively, this can show us that the low point of the average is being lowered ever so slightly more by members than casuals.
+
+----- The average ride time by each day for members vs casuals
+------ (Fixed the order of the days of the week):
+   all_trips_v2$member_casual all_trips_v2$day_of_week all_trips_v2$ride_length
+1                      casual                   Sunday                5061.3044
+2                      member                   Sunday                 972.9383
+3                      casual                   Monday                4752.0504
+4                      member                   Monday                 822.3112
+5                      casual                  Tuesday                4561.8039
+6                      member                  Tuesday                 769.4416
+7                      casual                Wednesday                4480.3724
+8                      member                Wednesday                 711.9838
+9                      casual                 Thursday                8451.6669
+10                     member                 Thursday                 707.2093
+11                     casual                   Friday                6090.7373
+12                     member                   Friday                 796.7338
+13                     casual                 Saturday                4950.7708
+14                     member                 Saturday                 974.0730
+------ This data shows us that Casual riders have a significantly higher daily ride length average than members, with Thursday and Friday being significant high points (albeit they could be carried by fewer, significantly higher data points), with a low point on Wednesday, the middle of the week. Members have a lower, more consistent daily average, with high points on the weekends with low points on Wednesday and Thursday.
+
+----- Ridership data by type and weekday:
+   member_casual weekday number_of_rides average_duration
+   <chr>         <ord>             <int>            <dbl>
+ 1 casual        Sun               18652            5061.
+ 2 casual        Mon                5591            4752.
+ 3 casual        Tue                7311            4562.
+ 4 casual        Wed                7690            4480.
+ 5 casual        Thu                7147            8452.
+ 6 casual        Fri                8013            6091.
+ 7 casual        Sat               13473            4951.
+ 8 member        Sun               60197             973.
+ 9 member        Mon              110430             822.
+10 member        Tue              127974             769.
+11 member        Wed              121902             712.
+12 member        Thu              125228             707.
+13 member        Fri              115168             797.
+14 member        Sat               59413             974.
+------ Casual riders are significantly more common on the weekends, showing that the higher daily averages are being carried by few riders using their bikes for longer. This also shows that casual riders most commonly use their bikes for casual riding on the weekends, as Saturday and Sundays have the highest amound of daily rides. Members on the other hand, most commonly ride their bikes on the weekday, often for lower periods of time, indicating that members most commonly use their bikes for transportation purposes, albeit with a still high amount of riders riding their bikes for longer periods on the weekends, most likely for casual riding.
+
+- Share
+-- Guiding questions
+--- What story does your data tell?
+--- How do your findings relate to your original question?
+--- Who is your audience? What is the best way to communicate with them?
+--- Can data visualization help you share your findings?
+--- Is your presentation accessible to your audience?
+-- Key tasks
+--- Determine the best way to share your findings
+--- Create effective data visualizations
+--- Present your findings
+--- Ensure your work is accessible to your audience
+
+Example:
+all_trips_v2 %>% 
+  mutate(weekday = wday(date, label = TRUE)) %>% 
+  group_by(member_casual, weekday) %>% 
+  summarise(number_of_rides = n()
+            ,average_duration = mean(ride_length)) %>% 
+  arrange(member_casual, weekday)  %>% 
+  ggplot(aes(x = weekday, y = average_duration, fill = member_casual)) +
+  geom_col(position = "dodge")
+
+all_trips_v2 %>% 
+  mutate(weekday = wday(date, label = TRUE)) %>% 
+  group_by(member_casual = "casual", weekday) %>% 
+  summarise(number_of_rides = n()
+            ,average_duration = mean(ride_length)) %>% 
+  arrange(member_casual, weekday)  %>% 
+  ggplot(aes(x = weekday, y = average_duration, fill = member_casual)) +
+  geom_col(position = "dodge")
+
+ggplot(all_trips_v2, aes(x = day_of_week, y = ride_length)) +
+	geom_point(size=2, shape=23)
+
+Graph: Casuals
+casualRiders %>% 
+  mutate(weekday = wday(date, label = TRUE)) %>% 
+  group_by(weekday) %>% 
+  ggplot(aes(x = weekday, y = mean(ride_length))) +
+  geom_point(size = 2, shape = 23)
+
+3. Placing Multiple Plots in a Single Figure
+To literally stack different ggplot objects on top of each other in the RStudio plot pane, you can use packages like patchwork or cowplot. 
+R
+# Install and load patchwork (or cowplot, gridExtra)
+# install.packages("patchwork")
+library(patchwork)
+library(ggplot2)
+
+p1 <- ggplot(mpg, aes(x = displ, y = hwy)) + geom_point() + ggtitle("Plot 1")
+p2 <- ggplot(mpg, aes(x = cty, y = hwy)) + geom_point() + ggtitle("Plot 2")
+p3 <- ggplot(mpg, aes(x = cyl, y = hwy)) + geom_point() + ggtitle("Plot 3")
+
+# Stack the plots vertically (ncol=1) or place side-by-side
+stacked_plots_vertical <- p1 + p2 + p3 + plot_layout(ncol = 1)
+print(stacked_plots_vertical)
+
+# Arrange in a grid
+grid_plots <- p1 + p2 + p3 + plot_layout(ncol = 3, nrow = 1)
+print(grid_plots)
+
+
+casual_long <- casual_summary_weekday %>%
+  pivot_longer(
+    cols = c(min_length, q1_length, median_length, mean_length, q3_length, max_length),  # Columns to pivot
+    names_to = "Type",         # New column for variable names ("Goals", "Assists")
+    values_to = "Ride Length (Seconds)"        # New column for the numerical values
+  )
+
+member_long <- member_summary_weekday %>%
+  pivot_longer(
+    cols = c(min_length, q1_length, median_length, mean_length, q3_length, max_length),  
+    names_to = "Type",         
+    values_to = "ride_length_seconds"        
+  )
+
+Graph: Casuals (1st and 3rd quartile, mean and median)
+casual_long %>%
+  dplyr::filter(type != "max_length" & type != "min_length") %>%
+  ggplot(aes(fill = type, x = day_of_week, y = ride_length_seconds)) +
+  geom_bar(stat = "identity", position = "dodge") + 
+  geom_text(aes (label = round(ride_length_seconds), color = factor(type)), vjust = -0.5) + 
+  scale_color_manual(values = c("q3_length" = "#440044", "q1_length" = "#000044", "median_length" = "#004400", "mean_length" = "#440000")) + 
+  ggtitle("Casual Ride Lengths (1st and 3rd quartile, median and mean)")
+
+Graph: Casuals (Min and Max)
+casual_long %>%
+  dplyr::filter(type != "q1_length" & type != "q3_length" & type != "median_length" & type != "mean_length") %>%
+  ggplot(aes(fill = type, x = day_of_week, y = ride_length_seconds)) +
+  geom_bar(stat = "identity", position = "dodge") + 
+  geom_text(aes (label = round(ride_length_seconds), color = factor(type)), vjust = -0.5) + 
+  scale_color_manual(values = c("min_length" = "#000044", "max_length" = "#440000")) + 
+  ggtitle("Casual Ride Lengths (Min and Max)")
+
+Graph: Members (1st and 3rd quartile, mean and median)
+member_long %>%
+  dplyr::filter(Type != "max_length" & Type != "min_length") %>%
+  ggplot(aes(fill = Type, x = day_of_week, y = ride_length_seconds)) +
+  geom_bar(stat = "identity", position = "dodge") + 
+  geom_text_repel(aes (label = round(ride_length_seconds), color = factor(Type)), direction = "y") + 
+  scale_color_manual(values = c("q3_length" = "#440044", "q1_length" = "#000044", "median_length" = "#004400", "mean_length" = "#440000")) + 
+  ggtitle("Member Ride Lengths (1st and 3rd quartile, median and mean)")
+
+Graph: Members (Min and Max)
+member_long %>% 
+  dplyr::filter(Type != "q1_length" & Type != "q3_length" & Type != "median_length" & Type != "mean_length") %>%
+  ggplot(aes(fill = Type, x = day_of_week, y = ride_length_seconds)) +
+  geom_bar(stat = "identity", position = "dodge") + 
+  geom_text_repel(aes (label = round(ride_length_seconds), color = factor(Type)), direction = "y") + 
+  scale_color_manual(values = c("min_length" = "#000044", "max_length" = "#440000")) + 
+  ggtitle("Member Ride Lengths (Min and Max)")
+  
+Graph: Total Rides (Both Members and Casuals)
+all_trips_v2 %>% 
+    mutate(weekday = wday(date, label = TRUE)) %>% 
+    group_by(member_casual, weekday) %>% 
+    summarise(number_of_rides = n()
+              ,average_duration = mean(ride_length)) %>% 
+    arrange(member_casual, weekday)  %>% 
+    ggplot(aes(x = weekday, y = number_of_rides, fill = member_casual)) +
+    geom_col(position = "dodge") + 
+    geom_text(aes (label = number_of_rides, color = factor(member_casual))) + 
+    scale_color_manual(values = c("member" = "#000044", "casual" = "#440000")) + 
+    ggtitle("Total # of Rides (Member and Casual)")
+
+Graph: Average Duration (Both Members and Casuals)
+all_trips_v2 %>% 
+  mutate(weekday = wday(date, label = TRUE)) %>% 
+  group_by(member_casual, weekday) %>% 
+  summarise(number_of_rides = n()
+            ,average_duration = mean(ride_length)) %>% 
+  arrange(member_casual, weekday)  %>% 
+  ggplot(aes(x = weekday, y = average_duration, fill = member_casual)) +
+  geom_col(position = "dodge") + 
+  geom_text(aes (label = round(average_duration), color = factor(member_casual))) + 
+  scale_color_manual(values = c("member" = "#000044", "casual" = "#440000")) + 
+  ggtitle("Average Ride Lengths (Member and Casual)")
+
+
+
+- Act
+-- Guiding questions
+--- What is your final conclusion based on your analysis?
+--- How can you apply your insights?
+--- Are there any next steps you or your stakeholders can take based on your findings?
+--- Is there additional data you could use to expand on your findings?
+--- How can you feature your case study in your portfolio?
+-- Key tasks
+--- Share next steps with your stakeholders
+--- Determine if more data could give you new insights
+--- Upload to your portfolio
+
+Case study track A, Work with existing questions and datasets
+Track A details
+- The first track involves a case study similar to what you might be asked for in a job interview. You will be given a business task, dataset, and list of specific deliverables that you must present to stakeholders. The first track will help you to create a case study that you could include in your portfolio to demonstrate job skills for future interviews. You can choose from between two cases. Once you decide which case study packet to use, you will read the details, complete the analysis, and create your finished case study. 
+- If this track interests you, explore the case study options and decide which one you want to perform. The case study packets available for download have everything that you need to complete your case study. Then, you will be ready to upload and share your case study with potential employers.
+How does a bike-share navigate speedy success?
+How can a wellness company play it smart?
+
+Case B (skip)
+
+Resources to explore other case studies
+- https://medium.com/search
+- https://github.com/search
+- http://public.tableau.com/
+- https://www.kaggle.com/
+
+Share your case study and portfolio
+- What platforms align with your interests and passions?
+- Where do you want to spend more time after this program?
+- Kaggle
+-- Broad data science community
+-- Competitions for users
+-- Learning opportunities
+- GitHub
+-- Primarily used for programming
+-- Share your code with other users
+-- Learn from other data analysts work
+-- https://medium.com/@brianmwevi/8-steps-to-publish-your-portfolio-on-github-9d6e6e3d2e84
+- Blog
+-- Personalized and ownable
+-- Opportunity to practice thought leadership
+-- Show off your expertise and write in your own voice
+- Tableau
+-- Already have experience
+-- Focused on data viz
+-- Create interactive dashboards
+
+Unlimited potential with analytics case studies
+Share your portfolio
+Create your online portfolio
+Add your portfolio to Kaggle
+- First, it’s helpful to know the different kinds of Notebooks on Kaggle. Every kind of Kaggle Notebook uses code, but each one contains different languages for programming or writing text. The different types include: 
+-- Scripts: Typically, these are code-only documents. Cells can be formatted in Python or R, and they execute each cell as code sequentially. 
+-- Jupyter Notebooks: Cells can be formatted in Python, Markdown, or R. These are the most flexible.
+-- RMarkdown scripts: Cells can be formatted in R and RMarkdown. These files are preferred by many R authors. 
+- Before you create a Notebook in Kaggle, decide which kind of Notebook you intend to use. 
+- To share the code you wrote in this course, choose a Kaggle Notebook that supports Python, such as a Python script or a Jupyter Notebook.
