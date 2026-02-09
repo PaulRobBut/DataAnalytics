@@ -1,3 +1,7 @@
 This is my Google Data Analytics Capstone project, focusing on Case Study 1, the Cyclistic bike share project. In this project, I utilized Google Sheets and RStudio to analyze two datasets of quarterly data to determine how Casual and Member riders utilize their bikes in the way that they do. Through this, I uncovered where they are similar, where they differ, and even one area that caused the data results to give inaccurate results. The project is designed to utilize a text document and a slideshow in tandem to form a nonverbal (though it can be verbal if need be) presentation of what the data results are and why I came to the conclusions that I did.
 
 Note: At the current moment, I just have my files here on GitHub, but you can view them online by clicking on the file and clicking "View Raw" at the bottom of the screen for each file.
+
+Additional Credits:
+- Google: For hosting the Data Analytics Class that I have been taking on Coursera
+- Lyft Bikes and Scooters LLC: Allowing the use of their data to perform the analysis on
